@@ -187,6 +187,11 @@
                 "version": "3.5.4"
             }
         },
-        "upload_options": {}
+        "upload_options": {
+            "compress_bin": true,
+            "description": "Created with PROS",
+            "remote_name": "EZ-Template-Example",
+            "slot": 1
+        }
     }
 }

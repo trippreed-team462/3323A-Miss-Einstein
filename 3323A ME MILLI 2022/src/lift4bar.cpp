@@ -11,9 +11,10 @@ const int OUT = 2;
 int lift4bar_state = 0;
 bool lock4_up = true;
 int lock4_lock = 0;
+pros::ADIDigitalOut lock4('B');
 
 pros::Motor lift4bar(10, MOTOR_GEARSET_36, true, MOTOR_ENCODER_DEGREES);
-pros::ADIDigitalOut lock4(6);
+pros::ADIDigitalOut lock4_(6);
 
 void set_lift4bar(int input) { lift4bar = input; }
 
@@ -60,20 +61,20 @@ else if (!master.get_digital(DIGITAL_R1)) {
   set_lift4bar_position(lift4bar_heights[lift4bar_state], 100);
 }
 
-int timer = 0;
+int timer4 = 0;
 void
 lock4_control(){
   //toggle for lock4
   if (master.get_digital(DIGITAL_R2) && lock4_lock==0) {
     set_lock4(OUT);
-    if(timer >= 20)
+    if(timer4 >= 20)
     {
       lock4_lock = 1;
-      timer = 0;
+      timer4 = 0;
     }
     printf("out");
 
   }
-    printf("timer = %d \n", timer);
-      timer++;
+    printf("timer4 = %d \n", timer4);
+      timer4++;
 }

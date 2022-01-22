@@ -42,17 +42,3 @@ void intake_control() {
   else
     set_intake(0);
 }
-
-void opcontrol() {
-  // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
-
-  while (true) {
-
-    chassis.tank(); // Tank control
-
-    intake_control();
-
-    pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME
-  }
-}

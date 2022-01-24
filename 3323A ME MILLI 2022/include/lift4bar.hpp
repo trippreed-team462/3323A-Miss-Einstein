@@ -5,4 +5,6 @@ void zero_lift4bar();
 int get_lift4bar();
 int get_lift4bar_vel();
 
+void lift4bar_control();
+void lock4_control();
 void set_lift4bar_position(int target, int speed);

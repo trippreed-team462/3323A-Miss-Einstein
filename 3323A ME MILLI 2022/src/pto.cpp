@@ -13,7 +13,7 @@ bool pto_intake_enabled = false;
 void pto_intake(bool toggle) {
   pto_intake_enabled = toggle;
   chassis.pto_toggle({intake_l, intake_r}, toggle);
-  pto_intake_piston.set_value(toggle);
+  pto_intake_piston.set_value(!toggle);
   if (toggle) {
     intake_l.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
     intake_r.set_brake_mode(pros::E_MOTOR_BRAKE_COAST);
@@ -26,19 +26,24 @@ void set_intake(int input) {
   intake_r = input;
 }
 
+
 int button_lock = 0;
 void intake_control() {
-  if (master.get_digital(DIGITAL_A) && button_lock == 0) {
+  if (master.get_digital(DIGITAL_RIGHT) && button_lock == 0) {
     pto_intake(!pto_intake_enabled);
     button_lock = 1;
-  } else if (!master.get_digital(DIGITAL_A)) {
+  } else if (!master.get_digital(DIGITAL_RIGHT)) {
     button_lock = 0;
   }
 
   if (master.get_digital(DIGITAL_B))
+  {
+    pto_intake(true);
     set_intake(127);
-  else if (master.get_digital(DIGITAL_DOWN))
+  }
+  else if (master.get_digital(DIGITAL_Y))
     set_intake(-127);
   else
     set_intake(0);
+    printf("%i\n", pto_intake_enabled);
 }

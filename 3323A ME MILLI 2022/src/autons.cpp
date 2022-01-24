@@ -228,8 +228,8 @@ void tug (int attempts) {
   }
 }
 
-// If there is no interference, robot will drive forward and turn 90 degrees. 
-// If interfered, robot will drive forward and then attempt to drive backwards. 
+// If there is no interference, robot will drive forward and turn 90 degrees.
+// If interfered, robot will drive forward and then attempt to drive backwards.
 void interfered_example() {
  chassis.set_drive_pid(24, DRIVE_SPEED, true);
  chassis.wait_drive();
@@ -248,3 +248,7 @@ void interfered_example() {
 // . . .
 // Make your own autonomous functions here!
 // . . .
+
+void poopyscoopy() {
+  
+}

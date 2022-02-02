@@ -1,8 +1,8 @@
 #include "main.h"
 
 
-const int num_of_pos = 4; //number of lift4bar positions
-const int lift4bar_heights[num_of_pos] = {0, 375, 266 ,375}; // lift4bar positions
+
+
 const int IN = true;
 const int OUT = false;
 
@@ -10,6 +10,7 @@ const int OUT = false;
 //Driver Control Variables
 int lift4bar_state = 0;
 bool lift4_up = true;
+bool lift4_down = true;
 int lock4_lock = 0;
 bool clamp4 = true;
 pros::ADIDigitalOut lock4('F');
@@ -55,6 +56,21 @@ lift4bar_control() {
   }
   else if (!master.get_digital(DIGITAL_R1)) {
   lift4_up = 0;
+}
+
+// lift6bar down
+if (master.get_digital(DIGITAL_L1) && lift4_down==0) {
+  // if lift4bar is at max height, bring it down to 0
+  if(lift4bar_state==0)
+   lift4bar_state = num_of_pos -1;
+ // Otherwise, bring lift4bar down
+ else
+  lift4bar_state--;
+
+ lift4_down = 1;
+}
+else if (!master.get_digital(DIGITAL_L1)) {
+lift4_down = 0;
 }
 
 // Lift4bar down

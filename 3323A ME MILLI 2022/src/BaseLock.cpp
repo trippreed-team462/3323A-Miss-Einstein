@@ -21,12 +21,12 @@ void set_BaseClamp(int input)
 void
 Basegrabby_control(){
   //toggle for lock4
-  if (master.get_digital(DIGITAL_DOWN) && BaseLock==0) {
+  if (master.get_digital(DIGITAL_L2) && BaseLock==0) {
     BaseClamp = !BaseClamp;
     set_BaseClamp(BaseClamp);
      BaseLock = 1;
   }
-  else if (!master.get_digital(DIGITAL_DOWN))
+  else if (!master.get_digital(DIGITAL_L2))
   BaseLock = 0;
 
 }

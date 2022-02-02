@@ -47,6 +47,7 @@
 // More includes here...
 //
 // . . .
+inline pros::Controller partner (pros::E_CONTROLLER_PARTNER);
 #include "lift6bar.hpp"
 #include "lift4bar.hpp"
 #include "BaseLock.hpp"

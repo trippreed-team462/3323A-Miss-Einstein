@@ -1,8 +1,8 @@
 #include "main.h"
 
 
-const int num_of_pos = 4; //number of lift6bar positions
-const int lift6bar_heights[num_of_pos] = {0, 298, 198, 298}; // lift6bar positions
+const int num_of_pos6 = 4; //number of lift6bar positions
+const int lift6bar_heights[num_of_pos6] = {0, 298, 198, 298}; // lift6bar positions
 const bool IN = true;
 const bool OUT = false;
 
@@ -10,6 +10,7 @@ const bool OUT = false;
 //Driver Control Variables
 int lift6bar_state = 0;
 bool lift6_up = true;
+bool lift6_down = true;
 int lock6_lock = 0;
 bool clamp6 = 0;
 pros::ADIDigitalOut lock6_('D');
@@ -44,9 +45,9 @@ void set_lock6(int input)
 void
 lift6bar_control() {
    // lift6bar up
-   if (master.get_digital(DIGITAL_L1) && lift6_up==0) {
+   if (partner.get_digital(DIGITAL_R1) && lift6_up==0) {
      // if lift6bar is at max height, bring it down to 0
-     if(lift6bar_state==num_of_pos-1)
+     if(lift6bar_state==num_of_pos6-1)
       lift6bar_state = 0;
     // Otherwise, bring lift up
     else
@@ -54,8 +55,23 @@ lift6bar_control() {
 
     lift6_up = 1;
 }
-else if (!master.get_digital(DIGITAL_L1)) {
+else if (!partner.get_digital(DIGITAL_R1)) {
   lift6_up = 0;
+}
+
+// lift6bar down
+if (partner.get_digital(DIGITAL_L1) && lift6_down==0) {
+  // if lift4bar is at max height, bring it down to 0
+  if(lift6bar_state==0)
+   lift6bar_state = num_of_pos6 -1;
+ // Otherwise, bring lift4bar down
+ else
+  lift6bar_state--;
+
+ lift6_down = 1;
+}
+else if (!partner.get_digital(DIGITAL_L1)) {
+lift6_down = 0;
 }
 
 // Lift6bar down
@@ -68,12 +84,12 @@ int timer6 = 0;
 void
 lock6_control(){
   //toggle for lock4
-  if (master.get_digital(DIGITAL_L2) && lock6_lock==0) {
+  if (partner.get_digital(DIGITAL_L2) && lock6_lock==0) {
     clamp6 = !clamp6;
   set_lock6(clamp6);
    lock6_lock = 1;
 
  }
-   else if (!master.get_digital(DIGITAL_L2))
+   else if (!partner.get_digital(DIGITAL_L2))
    lock6_lock = 0;
 }

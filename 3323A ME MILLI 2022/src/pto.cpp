@@ -29,19 +29,19 @@ void set_intake(int input) {
 
 int button_lock = 0;
 void intake_control() {
-  if (master.get_digital(DIGITAL_RIGHT) && button_lock == 0) {
+  if (master.get_digital(DIGITAL_B) && button_lock == 0) {
     pto_intake(!pto_intake_enabled);
     button_lock = 1;
-  } else if (!master.get_digital(DIGITAL_RIGHT)) {
+  } else if (!master.get_digital(DIGITAL_B)) {
     button_lock = 0;
   }
 
-  if (master.get_digital(DIGITAL_B))
+  if (partner.get_digital(DIGITAL_L2))
   {
     pto_intake(true);
     set_intake(127);
   }
-  else if (master.get_digital(DIGITAL_Y))
+  else if (partner.get_digital(DIGITAL_B))
     set_intake(-127);
   else
     set_intake(0);

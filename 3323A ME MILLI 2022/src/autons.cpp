@@ -65,65 +65,114 @@ void modified_exit_condition() {
   chassis.set_exit_condition(chassis.drive_exit, 80, 50, 300, 150, 500, 500);
 }
 
+//set_lock6(IN);
+//set_lock4(OUT);
+//set_BaseClamp(IN);
+//set_lift6bar_position(2, 127);
+//set_lift4bar_position(2, 127);
+//set_intake(127);
+
 //Put new autons here!!
 
-
+void solo_awp(){
 // put pringle in mogo on plat,back up move to mogo 2, place prigle in bucket
 
 //put pringle in mogo 1 bucket
-//  set_intake(100);
-//  pros::delay(500);
+  set_intake(100);
+  pros::delay(500);
 
-//  set_intake (0);
-//  chassis.wait_drive();
-
-//Turn to mogo 2
-//  chassis.set_drive_pid( 4, DRIVE_SPEED);
-//  chassis.wait_drive();
-
-//  chassis.set_turn_pid( -45, TURN_SPEED);
-//  chassis.wait_drive();
-
-//  chassis.set_drive_pid( -35, DRIVE_SPEED);
-//  chassis.wait_drive();
-
-//  chassis.set_turn_pid( 0, TURN_SPEED);
-//  chassis.wait_drive();
-
-  //drive twards goal 2
-//___int32_t_defined  set_lift4bar_position(2, 127 );
-
-  //chassis.set_drive_pid( -90, DRIVE_SPEED, true);
-  //chassis.wait_drive();
-
-  //pick up mogo/score
-  //chassis.set_drive_pid( 5, DRIVE_SPEED);
-  //chassis.wait_drive();
-
-  //set_intake (-90);
-  //pros::delay(400);
-//  chassis.wait_drive();
-
-  //Put mogo down
-//  chassis.set_drive_pid( 10, DRIVE_SPEED);
-//  chassis.wait_drive();
-
-//  pros::delay(300);
-
-
-//  chassis.set_drive_pid( 7, DRIVE_SPEED);
-//  chassis.wait_drive();
-
-//}
-
-void pringle_neutral(){
-
-  chassis.set_drive_pid( -51, DRIVE_SPEED);
+  set_intake (0);
   chassis.wait_drive();
 
-  lock6_lock(0);
+//Turn to mogo 2
+  chassis.set_drive_pid( 4, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid( -45, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid( -35, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid( 0, TURN_SPEED);
+  chassis.wait_drive();
+
+  //drive twards goal 2
+  set_lift4bar_position(2, 127 );
+
+  chassis.set_drive_pid( -90, DRIVE_SPEED, true);
+  chassis.wait_drive();
+
+  //pick up mogo/score
+  chassis.set_drive_pid( 5, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  //set_intake (-90);
+  pros::delay(400);
+  chassis.wait_drive();
+
+  //Put mogo down
+  chassis.set_drive_pid( 10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  pros::delay(300);
 
 
+  chassis.set_drive_pid( 7, DRIVE_SPEED);
+  chassis.wait_drive();
+
+}
+
+void pringle_neutral(){ //NEWWWWWW AUTONNNNNNNNNNNNNNNNNNNNNNN :))))))
+
+//drive to neutral mogo
+  chassis.set_drive_pid( -46, 127);
+  chassis.wait_drive();
+
+//clamp onto neutral mogo
+  set_lock6(IN);
+  pros::delay(300);
+
+//lift neutral goal
+  set_lift4bar_position(266, 127);
+  set_lift6bar_position(298, 127);
+  pros::delay(200);
+
+//get to aliance mogo
+  chassis.set_drive_pid( 30, DRIVE_SPEED);
+  chassis.wait_drive();
+  pros::delay(200);
+
+  chassis.set_turn_pid(90, TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(200);
+
+  chassis.set_drive_pid( -24, DRIVE_SPEED);
+  pros::delay(700);
+
+  //clamp onto aliance mogo
+  set_BaseClamp(IN);
+  pros::delay(200);
+
+  //get to pringle position
+  chassis.set_drive_pid( -10, DRIVE_SPEED);
+  chassis.wait_drive();
+  pros::delay(200);
+
+  chassis.set_turn_pid(180, TURN_SPEED);
+  chassis.wait_drive();
+  pros::delay(200);
+
+  //get pringles
+  set_intake(127);
+  chassis.set_drive_pid( 30, DRIVE_SPEED);
+  pros::delay(500);
+  set_intake(0);
+
+  //go back home!
+  chassis.wait_drive();
+  chassis.set_drive_pid(-20, DRIVE_SPEED);
+  chassis.wait_drive();
 }
 
 

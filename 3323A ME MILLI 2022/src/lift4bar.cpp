@@ -3,8 +3,6 @@
 
 
 
-const bool IN = true;
-const bool OUT = false;
 
 
 //Driver Control Variables

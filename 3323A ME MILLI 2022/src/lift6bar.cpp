@@ -3,8 +3,7 @@
 
 const int num_of_pos6 = 4; //number of lift6bar positions
 const int lift6bar_heights[num_of_pos6] = {0, 298, 198, 298}; // lift6bar positions
-const bool IN = true;
-const bool OUT = false;
+
 
 
 //Driver Control Variables
@@ -87,7 +86,7 @@ lock6_control(){
   if (partner.get_digital(DIGITAL_R2) && lock6_lock==0) {
     clamp6 = !clamp6;
   set_lock6(clamp6);
-   lock6_lock = 1;
+  lock6_lock = 1;
 
  }
    else if (!partner.get_digital(DIGITAL_R2))

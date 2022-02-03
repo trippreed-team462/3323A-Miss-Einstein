@@ -8,4 +8,6 @@ int get_lift6bar_vel();
 void lift6bar_control();
 void lock6_control();
 void set_lift6bar_position(int target, int speed);
-int lock6_lock(int imput);
+const bool IN = true;
+const bool OUT = false;
+void set_lock6(int input);

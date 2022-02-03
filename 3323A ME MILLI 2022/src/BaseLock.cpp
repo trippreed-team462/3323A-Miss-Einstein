@@ -1,7 +1,5 @@
 #include "main.h"
 
-const int IN = true;
-const int OUT = false;
 
 //Driver Control Variables
 bool BaseClamp = true;

@@ -3,8 +3,8 @@
 
 
 
-const int IN = true;
-const int OUT = false;
+const bool IN = true;
+const bool OUT = false;
 
 
 //Driver Control Variables
@@ -74,6 +74,7 @@ lift4_down = 0;
 }
 
 // Lift4bar down
+
 
 // Set the Lift4bar to the current position in the array
   set_lift4bar_position(lift4bar_heights[lift4bar_state], 100);

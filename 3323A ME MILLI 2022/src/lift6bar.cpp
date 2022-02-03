@@ -32,8 +32,8 @@ set_lift6bar_position(int target, int speed) {
 void set_lock6(int input)
 {
   if(input ==IN)
-  lock6_.set_value(true);
-  if(input ==OUT)
+ lock6_.set_value(true);
+ if(input ==OUT)
   lock6_.set_value(false);
 }
 
@@ -84,12 +84,12 @@ int timer6 = 0;
 void
 lock6_control(){
   //toggle for lock4
-  if (partner.get_digital(DIGITAL_L2) && lock6_lock==0) {
+  if (partner.get_digital(DIGITAL_R2) && lock6_lock==0) {
     clamp6 = !clamp6;
   set_lock6(clamp6);
    lock6_lock = 1;
 
  }
-   else if (!partner.get_digital(DIGITAL_L2))
+   else if (!partner.get_digital(DIGITAL_R2))
    lock6_lock = 0;
 }

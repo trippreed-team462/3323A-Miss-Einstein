@@ -8,7 +8,7 @@
 pros::Motor& intake_l = chassis.left_motors[2];
 pros::Motor& intake_r = chassis.right_motors[2];
 pros::ADIDigitalOut pto_intake_piston('B');
-bool pto_intake_enabled = false;
+bool pto_intake_enabled = true;
 
 void pto_intake(bool toggle) {
   pto_intake_enabled = toggle;

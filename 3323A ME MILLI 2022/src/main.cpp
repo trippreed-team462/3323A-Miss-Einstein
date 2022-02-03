@@ -76,7 +76,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("hi my name is jess sometimes poop lol! ", poopyscoopy),
+    //Auton("hi my name is jess sometimes poop lol! ", poopyscoopy),
+    Auton("Solo Auton Win Point.", solo_awp),
     Auton("Example Drive\n\nDrive forward and come back.", drive_example),
     Auton("Example Turn\n\nTurn 3 times.", turn_example),
     Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
@@ -137,6 +138,7 @@ void autonomous() {
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps autonomous consistency.
 
   set_lift4bar_position(lift4bar_heights[0], 100);
+  pto_intake(false);
 
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.
 }

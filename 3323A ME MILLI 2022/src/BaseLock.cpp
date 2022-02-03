@@ -7,6 +7,7 @@ const int OUT = false;
 bool BaseClamp = true;
 int BaseLock = 0;
 pros::ADIDigitalOut Basegrabby('H');
+pros::ADIDigitalIn  basegrabbylimit ('A');
 
 
 void set_BaseClamp(int input)
@@ -28,5 +29,11 @@ Basegrabby_control(){
   }
   else if (!master.get_digital(DIGITAL_L2))
   BaseLock = 0;
+
+
+  if (BaseLock == false && basegrabbylimit.get_value() == true){
+    BaseClamp = true;
+    set_BaseClamp(BaseClamp);
+  }
 
 }

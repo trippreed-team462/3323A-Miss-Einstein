@@ -65,6 +65,59 @@ void modified_exit_condition() {
   chassis.set_exit_condition(chassis.drive_exit, 80, 50, 300, 150, 500, 500);
 }
 
+//Put new autons here!!
+
+void
+solo_awp(){
+
+// put pringle in mogo on plat,back up move to mogo 2, place prigle in bucket
+
+//put pringle in mogo 1 bucket
+  set_intake(100);
+  pros::delay(500);
+
+  set_intake (0);
+  chassis.wait_drive();
+
+//Turn to mogo 2
+  chassis.set_drive_pid( 4, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid( -45, TURN_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid( -35, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  chassis.set_turn_pid( 0, TURN_SPEED);
+  chassis.wait_drive();
+
+  //drive twards goal 2
+  set_lift4bar_position(2, 127 );
+
+  chassis.set_drive_pid( -90, DRIVE_SPEED, true);
+  chassis.wait_drive();
+
+  //pick up mogo/score
+  chassis.set_drive_pid( 5, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  set_intake (-90);
+  pros::delay(400);
+  chassis.wait_drive();
+
+  //Put mogo down
+  chassis.set_drive_pid( 10, DRIVE_SPEED);
+  chassis.wait_drive();
+
+  pros::delay(300);
+  set_lock6(false);
+
+  chassis.set_drive_pid( 7, DRIVE_SPEED);
+  chassis.wait_drive();
+
+}
+
 
 
 ///
@@ -250,5 +303,5 @@ void interfered_example() {
 // . . .
 
 void poopyscoopy() {
-  
+
 }

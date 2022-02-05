@@ -76,7 +76,8 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-      Auton("Get neutral and aliance mogo, and score pringles.", pringle_neutral),
+      Auton("conveyor test.", conveyor_check),
+    //  Auton("Get neutral and aliance mogo, and score pringles.", pringle_neutral),
     //Auton("hi my name is jess sometimes poop lol! ", poopyscoopy),
   //  Auton("Solo Auton Win Point.", solo_awp),
     //Auton("Example Drive\n\nDrive forward and come back.", drive_example),

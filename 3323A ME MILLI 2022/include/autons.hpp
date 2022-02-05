@@ -12,6 +12,7 @@ void swing_example();
 void combining_movements();
 void interfered_example();
 void pringle_neutral();
+void conveyor_check();
 
 void default_constants();
 void one_mogo_constants();

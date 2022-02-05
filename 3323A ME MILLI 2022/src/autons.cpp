@@ -73,6 +73,13 @@ void modified_exit_condition() {
 //set_intake(127);
 
 //Put new autons here!!
+void conveyor_check(){
+
+  set_lock6(IN);
+  pros::delay(400);
+  set_intake(127);
+}
+
 
 void solo_awp(){
 // put pringle in mogo on plat,back up move to mogo 2, place prigle in bucket

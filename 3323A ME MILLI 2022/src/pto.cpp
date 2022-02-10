@@ -39,7 +39,7 @@ void intake_control() {
   if (partner.get_digital(DIGITAL_L2))
   {
     pto_intake(true);
-    set_intake(127);
+    set_intake(121);
   }
   else if (partner.get_digital(DIGITAL_B))
     set_intake(-127);

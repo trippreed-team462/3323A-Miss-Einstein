@@ -75,37 +75,56 @@ void modified_exit_condition() {
 
 //Put new autons here!!
 
-void skills_auton(){
+void skills_auton(){//SKILLLLLLLLLLLSSSSS AUTONNNNNNNNN
 
 //grab and lift red mogo
 set_lock6(IN);
 set_lift6bar_position(298, 127);
+pros::delay(300);
 
 //drive to second mogo
 chassis.set_drive_pid( 7, 80);
 chassis.wait_drive();
 
-chassis.set_turn_pid( 75, 80);
+
+chassis.set_turn_pid( 101, 80);
 chassis.wait_drive();
 
-chassis.set_drive_pid( -75, 80);
+chassis.set_drive_pid( 75, 80);
+pros::delay(3000);
 chassis.wait_drive();
 
 //grab onto neutral goal and lift
 set_lock4(IN);
 set_lift4bar_position(375, 80);
-
+/*
 //drive to platform
-chassis.set_turn_pid( 45, 80);
+chassis.set_turn_pid( -45, 80);
 chassis.wait_drive();
 
 chassis.set_drive_pid(27, 80);
 chassis.wait_drive();
 
-//put mogos on plat
-
+//put neutral mogo on plat
 set_lift4bar_position(275, 127);
+set_lock4(OUT);
 
+chassis.set_drive_pid(-10, 60);
+pros::delay(300);
+set_lift4bar_position(33, 127);
+
+//spin around and put aliance mogo on plat
+chassis.set_turn_pid( -80, 80);
+chassis.wait_drive();
+
+set_lift6bar_position(298, 127);
+chassis.set_drive_pid(11, 80);
+chassis.wait_drive();
+
+set_lift6bar_position(198, 127);
+set_lock6(OUT);
+
+*/
 
 }
 

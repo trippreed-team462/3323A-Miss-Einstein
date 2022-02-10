@@ -13,6 +13,7 @@ void combining_movements();
 void interfered_example();
 void pringle_neutral();
 void conveyor_check();
+void skills_auton();
 
 void default_constants();
 void one_mogo_constants();

@@ -140,7 +140,9 @@ void autonomous() {
   chassis.reset_drive_sensor(); // Reset drive sensors to 0
   chassis.set_drive_brake(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps autonomous consistency.
 
-  set_lift4bar_position(lift4bar_heights[0], 100);
+  //set_lift4bar_position(lift4bar_heights[10], 100);
+
+set_lift4bar(20);
   pto_intake(false);
 
   ez::as::auton_selector.call_selected_auton(); // Calls selected auton from autonomous selector.

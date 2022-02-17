@@ -78,53 +78,160 @@ void modified_exit_condition() {
 void skills_auton(){//SKILLLLLLLLLLLSSSSS AUTONNNNNNNNN
 
 //grab and lift red mogo
+set_lift4bar_position(24, 127);
 set_lock6(IN);
 set_lift6bar_position(298, 127);
 pros::delay(300);
 
 //drive to second mogo
-chassis.set_drive_pid( 7, 80);
+chassis.set_drive_pid( 7, 90);
 chassis.wait_drive();
 
 
-chassis.set_turn_pid( 101, 80);
+chassis.set_turn_pid( 98, 90);
 chassis.wait_drive();
 
-chassis.set_drive_pid( 75, 80);
-pros::delay(3000);
+//drive toward neutral goal 1
+chassis.set_drive_pid( 65, 90);
 chassis.wait_drive();
 
-//grab onto neutral goal and lift
+//grab onto neutral goal 1 and lift
 set_lock4(IN);
-set_lift4bar_position(375, 80);
-/*
+pros::delay(100);
+set_lift4bar_position(410, 127);
+
 //drive to platform
-chassis.set_turn_pid( -45, 80);
+chassis.set_turn_pid( 127, 90);
 chassis.wait_drive();
 
-chassis.set_drive_pid(27, 80);
+chassis.set_drive_pid(52, 90);
 chassis.wait_drive();
 
-//put neutral mogo on plat
-set_lift4bar_position(275, 127);
+chassis.set_turn_pid( 95, 127);
+chassis.wait_drive();
+pros::delay(100);
+
+//put neutral mogo 1 on plat
+set_lift4bar_position(295, 127);
 set_lock4(OUT);
+pros::delay(700);
 
-chassis.set_drive_pid(-10, 60);
-pros::delay(300);
-set_lift4bar_position(33, 127);
+chassis.set_drive_pid(-9, 90);
+chassis.wait_drive();
+set_lift4bar_position(20, 127);
 
 //spin around and put aliance mogo on plat
-chassis.set_turn_pid( -80, 80);
+chassis.set_turn_pid(-75, 90);
+chassis.wait_drive();
+
+chassis.set_drive_pid(-7, 90);
+chassis.wait_drive();
+
+set_lift6bar_position(250, 127);
+set_lock6(OUT);
+
+set_lift6bar_position(300, 127);
+pros::delay(200);
+
+chassis.set_drive_pid(2, 80);
+chassis.wait_drive();
+
+//drive to get red alliance mogo
+chassis.set_turn_pid( 0, 90);
+chassis.wait_drive();
+set_lift6bar_position(0, 127);
+
+chassis.set_drive_pid(46, 60);
+chassis.wait_drive();
+
+set_lock4(IN);
+
+//get to yellow big neutral
+chassis.set_drive_pid(-6, 90);
+chassis.wait_drive();
+
+set_lift4bar_position(375, 127);
+pros::delay(200);
+
+chassis.set_turn_pid(40, 90);
+chassis.wait_drive();
+
+chassis.set_drive_pid(-70, 60);
+chassis.wait_drive();
+
+//clamp onto big yellow neutral and lift
+set_lock6(IN);
+chassis.set_turn_pid(100, 60);
+chassis.wait_drive();
+
+set_lift6bar_position(325, 127);
+pros::delay(200);
+
+//drive to plat
+chassis.set_drive_pid(-33, 80);
+chassis.wait_drive();
+pros::delay(200);
+
+set_lift6bar_position(198, 127);
+pros::delay(600);
+
+//release mogo on plat
+set_lock6(OUT);
+pros::delay(600);
+
+chassis.set_drive_pid(3, 80);
 chassis.wait_drive();
 
 set_lift6bar_position(298, 127);
-chassis.set_drive_pid(11, 80);
+pros::delay(300);
+
+//spin around to put red on plat
+chassis.set_turn_pid( 265, 90);
+chassis.wait_drive();
+pros::delay(300);
+
+// put red on plat
+set_lock4(OUT);
+set_lift6bar_position(0, 127);
+pros::delay(400);
+
+//drive off of plat
+chassis.set_drive_pid(9, 80);
 chassis.wait_drive();
 
-set_lift6bar_position(198, 127);
+//drive to get blue alliance mogo
+chassis.set_turn_pid( 180, 90);
+chassis.wait_drive();
+set_lift4bar_position(20, 127);
+
+chassis.set_drive_pid(50, 60);
+chassis.wait_drive();
+
+set_lock4(IN);
+
+//back up to get yellow neutral #3
+chassis.set_drive_pid(-20, 60);
+chassis.wait_drive();
+
+chassis.set_turn_pid(270, 60);
+chassis.wait_drive();
+
+chassis.set_drive_pid(-37, 60);
+chassis.wait_drive();
+
+set_lock6(IN);
+pros::delay(200);
+
+set_lift6bar_position(298, 127);
+
+chassis.set_turn_pid(290, 60);
+chassis.wait_drive();
+
+chassis.set_drive_pid(-44, 60);
+chassis.wait_drive();
+
 set_lock6(OUT);
 
-*/
 
 }
 
@@ -193,13 +300,12 @@ void solo_awp(){
 void pringle_neutral(){ //NEWWWWWW AUTONNNNNNNNNNNNNNNNNNNNNNN :))))))
 
 //drive to neutral mogo
-  chassis.set_drive_pid( -46, 127);
+  chassis.set_drive_pid(-46, 127);
   chassis.wait_drive();
-  pros::delay(200);
 
 //clamp onto neutral mogo
   set_lock6(IN);
-  pros::delay(300);
+  pros::delay(100);
 
 //lift neutral goal
   set_lift4bar_position(266, 127);
@@ -209,11 +315,9 @@ void pringle_neutral(){ //NEWWWWWW AUTONNNNNNNNNNNNNNNNNNNNNNN :))))))
 //get to aliance mogo
   chassis.set_drive_pid( 29, DRIVE_SPEED);
   chassis.wait_drive();
-  pros::delay(200);
 
   chassis.set_turn_pid(90, TURN_SPEED);
   chassis.wait_drive();
-  pros::delay(200);
 
   chassis.set_drive_pid( -26, DRIVE_SPEED);
   chassis.wait_drive();
@@ -226,11 +330,9 @@ void pringle_neutral(){ //NEWWWWWW AUTONNNNNNNNNNNNNNNNNNNNNNN :))))))
   //get to pringle position
   chassis.set_drive_pid( 12, 100);
   chassis.wait_drive();
-  pros::delay(200);
 
   chassis.set_turn_pid(180, 75);
   chassis.wait_drive();
-  pros::delay(200);
 
   //get pringles
   pto_intake(true);

@@ -2,7 +2,7 @@
 
 
 const int num_of_pos6 = 4; //number of lift6bar positions
-const int lift6bar_heights[num_of_pos6] = {0, 298, 198, 298}; // lift6bar positions
+const int lift6bar_heights[num_of_pos6] = {0, 310, 198, 310}; // lift6bar positions
 
 
 

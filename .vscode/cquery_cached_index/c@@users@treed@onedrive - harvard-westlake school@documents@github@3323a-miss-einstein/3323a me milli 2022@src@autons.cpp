@@ -87,7 +87,7 @@ pros::delay(200);
 
 set_lift4bar_position(24, 127);
 set_lock6(IN);
-set_lift6bar_position(298, 127);
+set_lift6bar_position(310, 127);
 pros::delay(300);
 
 //drive to second mogo
@@ -157,14 +157,14 @@ chassis.set_turn_pid( 0, 90);
 chassis.wait_drive();
 set_lift6bar_position(0, 127);
 
-chassis.set_drive_pid(47, 90);
+chassis.set_drive_pid(50, 90);
 chassis.wait_drive();
 
 set_lock4(IN);
 
 //get to yellow big neutral
 set_lift6bar_position(0, 127);
-chassis.set_drive_pid(-7, 90);
+chassis.set_drive_pid(-10, 90);
 chassis.wait_drive();
 
 set_lift4bar_position(375, 127);
@@ -185,21 +185,21 @@ set_lift6bar_position(325, 127);
 pros::delay(200);
 
 //drive to red plat
-chassis.set_drive_pid(-33, 100);
+chassis.set_drive_pid(-34, 100);
 chassis.wait_drive();
 pros::delay(200);
 
-set_lift6bar_position(198, 127);
+set_lift6bar_position(198, 90);
 pros::delay(600);
 
 //release big yellow mogo on plat
 set_lock6(OUT);
 pros::delay(600);
 
-chassis.set_drive_pid(3, 90);
+chassis.set_drive_pid(4, 90);
 chassis.wait_drive();
 
-set_lift6bar_position(298, 127);
+set_lift6bar_position(310, 127);
 pros::delay(300);
 
 //spin around to put red #1 on plat
@@ -243,7 +243,7 @@ chassis.wait_drive();
 set_lock6(IN);
 pros::delay(200);
 
-set_lift6bar_position(298, 127);
+set_lift6bar_position(310, 127);
 
 //go to blue platform 2nd time
 chassis.set_turn_pid(230, 80);
@@ -344,24 +344,8 @@ void the_steal(){
 //lift 6 bar to get mogo in base grabby
 set_lock6(OUT);
 set_lift4bar_position(20, 10);
-set_lift6bar_position(298, 127);
+set_lift6bar_position(310, 127);
 pros::delay(500);
-
-/*
-chassis.set_drive_pid(-16, 60);
-chassis.wait_drive();
-
-//get mogo in base grabby
-set_BaseClamp(IN);
-pros::delay(300);
-
-//get in position to steal yellow neutral
-chassis.set_drive_pid(10, 90);
-chassis.wait_drive();
-
-chassis.set_turn_pid(92, 80);
-chassis.wait_drive();
-*/
 
 chassis.set_drive_pid(69,127);
 chassis.wait_drive();
@@ -395,7 +379,7 @@ set_BaseClamp(OUT);
 
 pto_intake(true);
 set_lift4bar_position(49, 10);
-set_lift6bar_position(298, 127);
+set_lift6bar_position(310, 127);
 pros::delay(200);
 
 chassis.set_drive_pid(-16, 110);
@@ -450,28 +434,29 @@ void pringle_neutral(){ //NEWWWWWW AUTONNNNNNNNNNNNNNNNNNNNNNN :))))))
 
 //drive to neutral mogo
   set_lock6(OUT);
+  set_lock4(OUT);
   set_BaseClamp(OUT);
+  pto_intake(false);
   set_lift4bar_position(24, 127);
 
-  chassis.set_drive_pid(-48, 127);
+  chassis.set_drive_pid(-45, 127);
+  chassis.wait_drive();
+
+  chassis.set_drive_pid(-5, 90);
   chassis.wait_drive();
 
 //clamp onto neutral mogo
   set_lock6(IN);
   pros::delay(100);
 
-//lift neutral goal
-  set_lift6bar_position(298, 127);
-  pros::delay(200);
-
 //get to aliance mogo
   chassis.set_drive_pid( 52, DRIVE_SPEED);
-  chassis.wait_drive();
+  pros::delay(700);
+
+  set_lift6bar_position(275, 127);
+  pros::delay(200);
 
   chassis.set_turn_pid( 95, DRIVE_SPEED);
-  chassis.wait_drive();
-
-
 /*
   //get to pringle position
   chassis.set_drive_pid( 12, 100);

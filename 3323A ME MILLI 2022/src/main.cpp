@@ -59,7 +59,7 @@ Drive chassis (
  * to keep execution time for this mode under a few seconds.
  */
 void initialize() {
-  // Print our branding over your terminal :D
+  // Print our branding over your terminal :D :D
   ez::print_ez_template();
 
   pros::delay(300); // Stop the user from doing anything while legacy ports configure.
@@ -81,10 +81,9 @@ void initialize() {
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
   //  Auton ("we steal what u take :).", the_steal);
-     Auton ("skilsssss.", skills_auton),
+    // Auton ("skilsssss.", skills_auton),
       //Auton("conveyor test.", conveyor_check),
-//  Auton("Get neutral and aliance mogo, and score pringles.", pringle_neutral),
-    //Auton("hi my name is jess sometimes poop lol! ", poopyscoopy),
+ Auton("Get neutral and aliance mogo, and score pringles.", pringle_neutral),
 //  Auton("We get em win points .", solo_awp),
     //Auton("Example Drive\n\nDrive forward and come back.", drive_example),
   //  Auton("Example Turn\n\nTurn 3 times.", turn_example),

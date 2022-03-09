@@ -73,6 +73,13 @@ void modified_exit_condition() {
 //pto_intake(true);
 //set_intake(127);
 
+/*
+skills auton
+The Steal
+Solo AWP
+Pringle neutral
+*/
+
 //Put new autons here!!
 
 void skills_auton(){//SKILLLLLLLLLLLSSSSS AUTONNNNNNNNN
@@ -110,7 +117,7 @@ set_lift4bar_position(410, 127);
 chassis.set_turn_pid( 128, 90);
 chassis.wait_drive();
 
-chassis.set_drive_pid(53, 90);
+chassis.set_drive_pid(51, 90);
 chassis.wait_drive();
 
 chassis.set_turn_pid(95, 127);
@@ -123,7 +130,7 @@ pros::delay(1500);
 set_lock4(OUT);
 pros::delay(300);
 
-chassis.set_drive_pid(-2, 100);
+chassis.set_drive_pid(-4, 100);
 chassis.wait_drive();
 
 set_lift4bar_position(350, 127);
@@ -185,7 +192,7 @@ set_lift6bar_position(325, 127);
 pros::delay(200);
 
 //drive to red plat
-chassis.set_drive_pid(-34, 100);
+chassis.set_drive_pid(-34, 80);
 chassis.wait_drive();
 pros::delay(200);
 
@@ -196,10 +203,10 @@ pros::delay(600);
 set_lock6(OUT);
 pros::delay(600);
 
-chassis.set_drive_pid(4, 90);
+chassis.set_drive_pid(4, 70);
 chassis.wait_drive();
 
-set_lift6bar_position(310, 127);
+set_lift6bar_position(310, 90);
 pros::delay(300);
 
 //spin around to put red #1 on plat
@@ -331,13 +338,6 @@ chassis.wait_drive();
 }
 
 
-void conveyor_check(){
-
-
-  pto_intake(true);
-  pros::delay(400);
-  set_intake(127);
-}
 
 void the_steal(){
 
@@ -428,6 +428,7 @@ set_intake(100);
 chassis.set_drive_pid(40 ,60);
 chassis.wait_drive();
 
+
 }
 
 void pringle_neutral(){ //NEWWWWWW AUTONNNNNNNNNNNNNNNNNNNNNNN :))))))
@@ -438,48 +439,58 @@ void pringle_neutral(){ //NEWWWWWW AUTONNNNNNNNNNNNNNNNNNNNNNN :))))))
   set_BaseClamp(OUT);
   pto_intake(false);
   set_lift4bar_position(24, 127);
+  set_lift6bar_position( 1, 127);
 
-  chassis.set_drive_pid(-45, 127);
-  chassis.wait_drive();
-
-  chassis.set_drive_pid(-5, 90);
-  chassis.wait_drive();
+  chassis.set_drive_pid(40, 127);
+  pros::delay(980);
 
 //clamp onto neutral mogo
-  set_lock6(IN);
+  set_lock4(IN);
   pros::delay(100);
 
 //get to aliance mogo
-  chassis.set_drive_pid( 52, DRIVE_SPEED);
-  pros::delay(700);
+  chassis.set_drive_pid( -21, 127);
+  pros::delay(500);
 
-  set_lift6bar_position(275, 127);
+  set_lift4bar_position(295, 127);
   pros::delay(200);
 
-  chassis.set_turn_pid( 95, DRIVE_SPEED);
-/*
-  //get to pringle position
+  set_lift6bar_position(289, 127);
+  chassis.set_turn_pid( -63, 80);
+  chassis.wait_drive();
+
+  //grab alliance mogo
+  chassis.set_drive_pid( -19, 100);
+  chassis.wait_drive();
+
+  set_BaseClamp(IN);
+  pros::delay(70);
+  pto_intake(false);
+
+//get to pringle position
   chassis.set_drive_pid( 12, 100);
   chassis.wait_drive();
 
-  chassis.set_turn_pid(180, 75);
+  chassis.set_turn_pid(-190, 90);
   chassis.wait_drive();
 
   //get pringles
   pto_intake(true);
   set_intake(127);
   pros::delay(200);
-  chassis.set_drive_pid( 30, 55);
+  chassis.set_drive_pid( 28, 40);
   pros::delay(3000);
   set_intake(0);
 
   //go back home!
   chassis.wait_drive();
-  chassis.set_drive_pid(-20, DRIVE_SPEED);
+  chassis.set_drive_pid(-10, DRIVE_SPEED);
   chassis.wait_drive();
 
-  */
+
 }
+
+
 
 
 ///

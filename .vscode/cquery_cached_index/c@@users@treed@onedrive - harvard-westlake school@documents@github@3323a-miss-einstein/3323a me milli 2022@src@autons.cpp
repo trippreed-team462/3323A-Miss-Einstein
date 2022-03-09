@@ -110,7 +110,7 @@ set_lift4bar_position(410, 127);
 chassis.set_turn_pid( 128, 90);
 chassis.wait_drive();
 
-chassis.set_drive_pid(53, 90);
+chassis.set_drive_pid(51, 90);
 chassis.wait_drive();
 
 chassis.set_turn_pid(95, 127);
@@ -123,7 +123,7 @@ pros::delay(1500);
 set_lock4(OUT);
 pros::delay(300);
 
-chassis.set_drive_pid(-2, 100);
+chassis.set_drive_pid(-4, 100);
 chassis.wait_drive();
 
 set_lift4bar_position(350, 127);
@@ -185,7 +185,7 @@ set_lift6bar_position(325, 127);
 pros::delay(200);
 
 //drive to red plat
-chassis.set_drive_pid(-34, 100);
+chassis.set_drive_pid(-34, 80);
 chassis.wait_drive();
 pros::delay(200);
 
@@ -196,10 +196,10 @@ pros::delay(600);
 set_lock6(OUT);
 pros::delay(600);
 
-chassis.set_drive_pid(4, 90);
+chassis.set_drive_pid(4, 70);
 chassis.wait_drive();
 
-set_lift6bar_position(310, 127);
+set_lift6bar_position(310, 90);
 pros::delay(300);
 
 //spin around to put red #1 on plat

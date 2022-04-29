@@ -53,6 +53,7 @@ lift6bar_control() {
      lift6bar_state++;
 
     lift6_up = 1;
+    set_lift6bar_position(lift6bar_heights[lift6bar_state], 100);
 }
 else if (!partner.get_digital(DIGITAL_R1)) {
   lift6_up = 0;
@@ -68,15 +69,18 @@ if (partner.get_digital(DIGITAL_L1) && lift6_down==0) {
   lift6bar_state--;
 
  lift6_down = 1;
+ set_lift6bar_position(lift6bar_heights[lift6bar_state], 100);
 }
 else if (!partner.get_digital(DIGITAL_L1)) {
 lift6_down = 0;
 }
 
-// Lift6bar down
+
+
+
 
 // Set the Lift6bar to the current position in the array
-  set_lift6bar_position(lift6bar_heights[lift6bar_state], 100);
+
 }
 
 int timer6 = 0;

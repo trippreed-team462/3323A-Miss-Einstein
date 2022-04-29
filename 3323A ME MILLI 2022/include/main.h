@@ -52,6 +52,7 @@ inline pros::Controller partner (pros::E_CONTROLLER_PARTNER);
 #include "lift4bar.hpp"
 #include "BaseLock.hpp"
 #include "PTO.hpp"
+#include "schtik.hpp"
 
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do

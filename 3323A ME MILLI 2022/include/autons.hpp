@@ -11,11 +11,16 @@ void wait_until_change_speed();
 void swing_example();
 void combining_movements();
 void interfered_example();
-void pringle_neutral();
-void conveyor_check();
 void skills_auton();
 void the_steal();
 void solo_awp();
+void right_pringle_neutral();
+void left_pringle_neutral();
+void RT_schtik_rush();
+void skills_slow();
+void skills_fast();
+//void LT_schtik_rush();
+void center_doinker();
 
 void default_constants();
 void one_mogo_constants();

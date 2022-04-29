@@ -67,6 +67,7 @@ void initialize() {
   //start 4bar and 6bar locks down
   set_lock4(IN);
   set_lock6(IN);
+  pto_intake(false);
 
    // Configure your chassis controls
   chassis.toggle_modify_curve_with_controller(true); // Enables modifying the controller curve with buttons on the joysticks
@@ -80,23 +81,30 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-  //  Auton ("we steal what u take :).", the_steal);
-    // Auton ("skilsssss.", skills_auton),
-      //Auton("conveyor test.", conveyor_check),
- Auton("Get neutral and aliance mogo, and score pringles.", pringle_neutral),
-//  Auton("We get em win points .", solo_awp),
-    //Auton("Example Drive\n\nDrive forward and come back.", drive_example),
-  //  Auton("Example Turn\n\nTurn 3 times.", turn_example),
-  //  Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
-  //  Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
-  //  Auton("Swing Example\n\nSwing, drive, swing.", swing_example),
-  //  Auton("Combine all 3 movements", combining_movements),
-  //  Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
+   Auton("literally lightning McQueen.......No cap", skills_fast),
+  // Auton("MID not gonna lie", skills_medium),
+   Auton("slow slow slow", skills_auton),
+   Auton("How much u wanna bet we can get it faster then u.", RT_schtik_rush),
+   Auton("right side, Get neutral and aliance mogo, and score pringles.", right_pringle_neutral),
+   Auton("left side, Get neutral and aliance mogo, and score pringles.", left_pringle_neutral),
+  Auton("We don't got high goal pringles, but neither do u", center_doinker),
+   Auton("We get em win points .", solo_awp),
+   Auton("skilsssss.", skills_auton),
+   Auton("we steal what u take :).", the_steal),
+
+   // Auton("Example Drive\n\nDrive forward and come back.", drive_example),
+   // Auton("Example Turn\n\nTurn 3 times.", turn_example),
+   // Auton("Drive and Turn\n\nDrive forward, turn, come back. ", drive_and_turn),
+   // Auton("Drive and Turn\n\nSlow down during drive.", wait_until_change_speed),
+   // Auton("Swing Example\n\nSwing, drive, swing.", swing_example),
+   // Auton("Combine all 3 movements", combining_movements),
+   // Auton("Interference\n\nAfter driving forward, robot performs differently if interfered or not.", interfered_example),
   });
 
   // Initialize chassis and auton selector
   chassis.initialize();
   ez::as::initialize();
+  chassis.set_pid_constants(&chassis.headingPID, 13, 0, 40, 0);
 }
 
 
@@ -170,7 +178,7 @@ set_lift4bar(20);
 void opcontrol() {
 
   // This is preference to what you like to drive on.
-  chassis.set_drive_brake(MOTOR_BRAKE_COAST);
+  chassis.set_drive_brake(MOTOR_BRAKE_BRAKE);
 
   while (true) {
 
@@ -180,6 +188,20 @@ void opcontrol() {
     // chassis.arcade_flipped(ez::SPLIT); // Flipped split arcade
     // chassis.arcade_flipped(ez::SINGLE); // Flipped single arcade
 
+if (master.get_digital(DIGITAL_RIGHT)and(master.get_digital(DIGITAL_Y))){
+
+  chassis.reset_pid_targets(); // Resets PID targets to 0
+  chassis.reset_gyro(); // Reset gyro position to 0
+  chassis.reset_drive_sensor(); // Reset drive sensors to 0
+  chassis.set_drive_brake(MOTOR_BRAKE_HOLD); // Set motors to hold.  This helps autonomous consistency.
+
+  //set_lift4bar_position(lift4bar_heights[10], 100);
+
+set_lift4bar(20);
+  pto_intake(false);
+
+  skills_auton();
+}
     // . . .
     // Put moree user control code here!
     // . . .
@@ -191,7 +213,7 @@ void opcontrol() {
   lift4bar_control();
   lock4_control();
   intake_control();
-
+  schtikA_control();
 
 
     pros::delay(ez::util::DELAY_TIME); // This is used for timer calculations!  Keep this ez::util::DELAY_TIME

@@ -29,10 +29,10 @@ void set_intake(int input) {
 
 int button_lock = 0;
 void intake_control() {
-  if (master.get_digital(DIGITAL_B) && button_lock == 0) {
+  if (master.get_digital(DIGITAL_DOWN) && button_lock == 0) {
     pto_intake(!pto_intake_enabled);
     button_lock = 1;
-  } else if (!master.get_digital(DIGITAL_B)) {
+  } else if (!master.get_digital(DIGITAL_DOWN)) {
     button_lock = 0;
   }
 
@@ -45,5 +45,5 @@ void intake_control() {
     set_intake(-127);
   else
     set_intake(0);
-    printf("%i\n", pto_intake_enabled);
+    //printf("%i\n", pto_intake_enabled);
 }
